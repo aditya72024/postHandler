@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8"/>
+      <title>Js Simulator</title>
+      <meta name="description" content="Pit Boss Sweepstakes" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+      <meta name="HandheldFriendly" content="true"/>
+      <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+
+      <meta name="robots" content="noindex,nofollow">
+
+   </head>
+   <body>
+      <script>
+
+
+         
+
+
+         const postHandler = async()=>{
+
+            const Posts = [{title:'POST1'}];
+            let User = {Name:'XYZ', lastActivity: new Date().toLocaleTimeString()}
+
+
+            const updateLastUserActivityTime = new Promise((resolve,reject)=>{
+               setTimeout(()=>{
+                  User.lastActivity = new Date().toLocaleTimeString();
+                  resolve();
+
+               },1000) 
+
+
+            })
+
+            const LastUserActivityTime = new Promise((resolve,reject)=>{
+               setTimeout(()=>{
+                  resolve(User);
+               },1000)   
+            })
+
+            const createPost = new Promise((resolve,reject)=>{
+               setTimeout(()=>{
+                  Posts.push({title: 'POST_NEW'});
+                  resolve()
+               },1000)   
+            });
+
+            const getPost = new Promise((resolve,reject)=>{
+
+               setTimeout(()=>{
+
+                  Posts.forEach((Post)=>{
+                     console.log(Post.title);
+                  });
+
+                  resolve();
+               },1000)    
+            })
+
+            const deletePost = new Promise((resolve, reject)=>{
+
+               setTimeout(()=>{
+                  if(Posts.length > 0){
+
+                     Posts.pop();
+                     resolve();
+                  }else{
+                     reject("Error: Array Empty");
+                  }
+               },1000)   
+
+            })
+
+            console.log(User.lastActivity);
+            let createpost = await createPost;
+            updateLastUserActivityTime;
+            let getpost = await getPost;
+            let Lastuseractivitytime = await LastUserActivityTime;
+            console.log(User.lastActivity);
+            deletePost;
+         }  
+
+
+         postHandler();
+
+
+      
+
+      </script>
+   </body>
+</html>
